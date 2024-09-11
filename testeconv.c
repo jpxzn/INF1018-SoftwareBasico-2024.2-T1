@@ -2,6 +2,12 @@
 #include "converteutf832.h"
 
 int main(){
-  printf("Hello World!\n");
+  FILE* fEntrada = fopen("utf8_peq.txt","r");
+  FILE* fSaida = fopen("teste1.txt", "w");
+
+  int result = convUtf8p32(fEntrada, fSaida);
+
+  fclose(fEntrada);
+  fclose(fSaida);
   return 0;
 }
