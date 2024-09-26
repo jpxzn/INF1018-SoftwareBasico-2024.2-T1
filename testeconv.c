@@ -5,7 +5,7 @@ int main(){
   FILE* fEntrada = fopen("utf8_peq.txt","r");
   FILE* fSaida = fopen("teste1.txt", "w");
 
-  int result = convUtf8p32(fEntrada, fSaida);
+  convUtf8p32(fEntrada, fSaida);
 
   fclose(fEntrada);
   fclose(fSaida);

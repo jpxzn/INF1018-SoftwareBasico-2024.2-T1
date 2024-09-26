@@ -4,10 +4,9 @@
 #include "converteutf832.h"
 
 
-int convUtf8p32(FILE *arquivo_entrada, FILE *arquivo_saida){
-    char teste;
-    while(fscanf(arquivo_entrada,'%c', &teste)==1){
-        printf("%c",teste);
+void convUtf8p32(FILE *arquivo_entrada, FILE *arquivo_saida){
+    unsigned char byte;
+    while(fread(&byte, sizeof(byte),1,arquivo_entrada)==1){
+        printf("%x\n",byte);
     }
-    return 1;
 }
