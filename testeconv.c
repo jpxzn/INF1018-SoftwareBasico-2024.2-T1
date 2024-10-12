@@ -2,10 +2,10 @@
 #include "converteutf832.h"
 
 int main(){
-    FILE* fEntrada = fopen("utf8_peq.txt","rb");
-    FILE* fSaida   = fopen("utf8to32_peq.txt", "wb");
-    FILE* fEntrada02 = fopen("utf32_peq_big.txt","rb");
-    FILE* fSaida02   = fopen("utf32to8_peq.txt", "wb");
+    FILE* fEntrada   = fopen("UTF8_pequeno.txt","rb");
+    FILE* fSaida     = fopen("_UTF32_Convertido_pequeno.txt", "wb");
+    FILE* fEntrada02 = fopen("UTF32_pequeno_LittleEndian.txt","rb");
+    FILE* fSaida02   = fopen("_UTF8_Convertido_pequeno.txt",  "wb");
 
     convUtf8p32(fEntrada, fSaida);
     convUtf32p8(fEntrada02, fSaida02);
