@@ -51,13 +51,11 @@ $ hexdump _UTF8_Convertido_pequeno_BigEndian.txt
 0000015
 
 
-
-
 RESOLUÇÃO: 
     O que se pode observar pelas saídas é que o 
     código cumpre corretamente o objetivo do trbalho 
     em relação as suas conversões de UTF32 para UTF 8 e UTF 8 para UTF32
-
+    A conversão funcionou em todos os casos.
 
 
 
