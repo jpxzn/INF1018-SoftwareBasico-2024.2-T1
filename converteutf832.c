@@ -35,6 +35,14 @@ void convUtf8p32(FILE *arquivo_entrada, FILE *arquivo_saida){
     }
 }
 
+unsigned int swapEndian(unsigned int value) {
+    return ((value >> 24) & 0xFF) | 
+           ((value << 8) & 0xFF0000) | 
+           ((value >> 8) & 0xFF00) | 
+           ((value << 24) & 0xFF000000);
+}
+
+
  int UTF32toUTF8(unsigned int utf32, unsigned char * utf8) {
     if (utf32 <= 0x7F) {
         utf8[0] = utf32 & 0x7F;
@@ -62,13 +70,26 @@ void convUtf8p32(FILE *arquivo_entrada, FILE *arquivo_saida){
 int convUtf32p8(FILE *arquivoEntrada, FILE *arquivoSaida) {
     unsigned int BOM;
     fread(&BOM, 4, 1, arquivoEntrada);
+    
+    int isLittleEndian = 0;
+    if (BOM == 0xFFFE0000) {
+        // Big Endian BOM
+        isLittleEndian = 0;
+    } else if (BOM == 0x0000FEFF) {
+        // Little Endian BOM
+        isLittleEndian = 1;
+    } 
+
+
     unsigned int TamanhoUTF8;
     unsigned int U32;
     unsigned char * UTF8 = (unsigned char*) malloc(4);
 
     while ( fread(&U32, 4, 1, arquivoEntrada) == 1 ) {
-        TamanhoUTF8 = UTF32toUTF8(U32, UTF8);
+        if (!isLittleEndian) U32 = swapEndian(U32); 
 
+        TamanhoUTF8 = UTF32toUTF8(U32, UTF8);
+        printf("CHAR: %08X\n", U32);
         fwrite(UTF8, TamanhoUTF8, 1, arquivoSaida);
         }
 
