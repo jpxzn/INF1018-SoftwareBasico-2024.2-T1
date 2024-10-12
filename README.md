@@ -1,7 +1,7 @@
 # INF1018-SoftwareBasico-2024.2-T1  
 Alunos:    
-João Pedro Gonçalves  
-Davi Donato  
+João Pedro Gonçalves 2320464  
+Davi Donato 2320399  
 
 Enunciado:  
 Conversor de UTF-8 para UTF-32  
