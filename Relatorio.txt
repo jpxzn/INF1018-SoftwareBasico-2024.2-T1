@@ -1,0 +1,63 @@
+Davi Donato 2320399
+Joao Zaidman 2320464
+
+OBJETIVO: 
+    O objetivo do trabalho coniste em cria duas funções, 
+    a primeira que converte um arquivo com grafemas UTF8 
+    em um arquivo com grafemas UTF32, no formato little endian
+    A segunda função faz o inverso, ela pega um arquivo UTF32 
+    em little endian ou big endian e converte para um arquivo UTF8
+
+1) Conversão UTF8 para UTF32
+    1º sáida : Formato hexadecimal do arquivo UTF32 retirado do site do curso
+    2º sáida : Formato hexadecimal do arquivo UTF32 criado a partir da conversão do arquivo UTF8 retirado do site
+    R: Ambos os hexadecimais são identicos
+
+$ hexdump -C UTF32_pequeno_LittleEndian.txt
+00000000  ff fe 00 00 43 00 00 00  4c 00 00 00 41 00 00 00  |....C...L...A...|
+00000010  56 00 00 00 45 00 00 00  20 00 00 00 1e d1 01 00  |V...E... .......|
+00000020  20 00 00 00 41 00 00 00  47 00 00 00 55 00 00 00  | ...A...G...U...|
+00000030  41 00 00 00 20 00 00 00  34 6c 00 00 20 00 00 00  |A... ...4l.. ...|
+00000040  2e 00 00 00                                       |....|
+00000044
+
+$ hexdump -C _UTF32_Convertido_pequeno_littleEndian.txt
+00000000  ff fe 00 00 43 00 00 00  4c 00 00 00 41 00 00 00  |....C...L...A...|
+00000010  56 00 00 00 45 00 00 00  20 00 00 00 1e d1 01 00  |V...E... .......|
+00000020  20 00 00 00 41 00 00 00  47 00 00 00 55 00 00 00  | ...A...G...U...|
+00000030  41 00 00 00 20 00 00 00  34 6c 00 00 20 00 00 00  |A... ...4l.. ...|
+00000040  2e 00 00 00                                       |....|
+00000044
+
+2) Conversão UTF32 (Little Endian) para UTF8
+    1º sáida : Formato hexadecimal do arquivo UTF8 retirado do site do curso
+    2º sáida : Formato hexadecimal do arquivo UTF8 criado a partir da conversão do arquivo UTF32 (Little Endian) retirado do site
+    3º sáida : Formato hexadecimal do arquivo UTF8 criado a partir da conversão do arquivo UTF32 (Big Endian) retirado do site
+    R: Ambos os hexadecimais são identicos
+
+$ hexdump UTF8_pequeno.txt
+0000000 4c43 5641 2045 9df0 9e84 4120 5547 2041
+0000010 b0e6 20b4 002e
+0000015
+
+$ hexdump _UTF8_Convertido_pequeno_LittleEndian.txt
+0000000 4c43 5641 2045 9df0 9e84 4120 5547 2041
+0000010 b0e6 20b4 002e
+0000015
+
+$ hexdump _UTF8_Convertido_pequeno_BigEndian.txt
+0000000 4c43 5641 2045 9df0 9e84 4120 5547 2041
+0000010 b0e6 20b4 002e
+0000015
+
+
+
+
+RESOLUÇÃO: 
+    O que se pode observar pelas saídas é que o 
+    código cumpre corretamente o objetivo do trbalho 
+    em relação as suas conversões de UTF32 para UTF 8 e UTF 8 para UTF32
+
+
+
+
